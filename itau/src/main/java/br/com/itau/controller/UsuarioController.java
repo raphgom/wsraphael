@@ -22,6 +22,29 @@ public class UsuarioController {
 	@Autowired // Delega para o SpringBoot o gerenciamento deste atributo
 	private UsuarioDAO udao;
 
+	// Função de Login processando pelo FrontEnd consultando o banco
+	@PostMapping("/login2")
+	public ResponseEntity<Usuario> logar2(@RequestBody Usuario objeto){
+		Usuario usuario = udao.findByEmailAndSenha(objeto.getEmail(), objeto.getSenha());
+				if(usuario==null) {
+					return ResponseEntity.status(404).build();
+				}
+		return ResponseEntity.ok(usuario);
+	}
+	
+	// Função de Login processando pelo BackEnd consultando o banco
+	
+	@PostMapping("/login")
+	public ResponseEntity<Usuario> logar(@RequestBody Usuario objeto) {
+		List<Usuario> lista = (List<Usuario>) udao.findAll();
+		for (Usuario usuario : lista) {
+			if (usuario.getEmail().equals(objeto.getEmail()) && usuario.getSenha().equals(objeto.getSenha())) {
+				return ResponseEntity.ok(usuario);
+			}
+		}
+		return ResponseEntity.status(404).build();
+	}
+
 	// POST para consultar usuários por ID, puxando o RequestBody(JSON) para
 	// instanciar o objeto
 	@PostMapping("/usuariospostbyid")
@@ -29,7 +52,7 @@ public class UsuarioController {
 		try {
 			Usuario resposta = udao.findById(objeto.getId()).orElse(new Usuario());
 			resposta.setSenha("");
-			if (resposta.getId()==0) {
+			if (resposta.getId() == 0) {
 				return ResponseEntity.status(404).build();
 			}
 			return ResponseEntity.ok(resposta);

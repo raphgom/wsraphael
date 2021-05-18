@@ -11,6 +11,7 @@ import br.com.itau.usuario.modelo.Usuario;
  */
 public interface UsuarioDAO extends CrudRepository<Usuario, Integer>{
 
+	public Usuario findByEmailAndSenha(String email, String senha);
 	/*
 	 * CrudRepository -> É a classe pai do UsuarioDAO e está informando
 	 * ao SpringBoot que esta classe armazenará o CRUD para o usuário.
