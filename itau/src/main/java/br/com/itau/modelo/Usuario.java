@@ -1,4 +1,4 @@
-package br.com.itau.usuario.modelo;
+package br.com.itau.modelo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

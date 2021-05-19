@@ -2,7 +2,7 @@ package br.com.itau.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
-import br.com.itau.usuario.modelo.Usuario;
+import br.com.itau.modelo.Usuario;
 
 /*
  * DAO -> É um pattern que sugestiona onde devem ficar os comandos SQL DML.

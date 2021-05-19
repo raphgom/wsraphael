@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.itau.dao.UsuarioDAO;
-import br.com.itau.usuario.modelo.Usuario;
+import br.com.itau.modelo.Usuario;
 
 @RestController // Para Rest API, o SpringBoot entenderá que a classe responderá a requisições
 				// HTTP
